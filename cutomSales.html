@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="">
+    <head>
+        <title>Stock History</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        
+<!--- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+<!--HTML5 Shim and Respond.js IE8 support of HTML5
+elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the
+page via file:// -->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+    </head>
+    <body>
+        <header><h1>PHP Pharmacy Hawthorn</h1></header><br><br>
+        <div class="row"  data-ng-init="data=[{ReceiptNumber:'2555587', ItemNumber:'D-123', ItemName:'Disprin', CustomerNumber:'Ck-129',QuantitySold: '4', Date: '04/04/2017'}, {ReceiptNumber:'2555585', ItemNumber:'MD-123', ItemName:'Midwe', CustomerNumber:'MD-129',QuantitySold: '4', Date: '04/04/2017'},{ReceiptNumber:'25555844', ItemNumber:'HD-123', ItemName:'Hilwee', CustomerNumber:'HIk-129',QuantitySold: '8', Date: '04/04/2017'}]">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Current Stock</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Stock History</a></li>
+                    <li><a data-toggle="tab" href="#menu3">Sales Report</a></li>
+                </ul>
+
+                  <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                      <h3>HOME</h3><br>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                      <h3>Current Stock</h3><br>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <div class="container">    
+                            <br><h3><u>Stock History</u></h3><br>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label for="searchReceipt">Receipt Number:</label>
+                                    <br/>
+                                    <input type="text" id="searchReceipt" name="searchReceipt" data-ng-model="searchReceipt"/><br>
+                                    <label for="searchCust">Customer Number:</label>
+                                    <br/>
+                                    <input type="text" id="searchCust" name="searchCust" data-ng-model="searchCust"/><br>
+                                </div>
+                                    <div class="col-xs-6">
+                                        <label for="date">Please select sale date:</label><br>
+                                        <input type="text" id="date" placeholder="dd/mm/yy" data-ng-model="searchDate">
+                                    </div>
+                            </div>        
+                            <div class="table-responsive">
+                                 <table class="table table-striped table-hover">
+                                     <thead class="thead-inverse">
+                                         <tr><th scope="col">Receipt Number</th>
+                                             <th scope="col">Item Number</th>
+                                             <th scope="col">Item Name</th>
+                                              <th scope="col">Customer Number</th>
+                                             <th scope="col">Quantity Sold</th>
+                                            <th scope="col">Date</th>
+                                        </tr>
+                                    <tbody>
+                                        <tr data-ng-repeat="d in data | filter:{ReceiptNumber:searchReceipt} | filter:{CustomerNumber:searchCust}|filter:{Date:searchDate}">
+                                            <td>
+                                                {{d.ReceiptNumber}}
+                                            </td>
+                                            <td>
+                                                {{d.ItemNumber}}
+                                            </td>
+                                            <td>
+                                                 {{d.ItemName}}
+                                            </td>
+                                            <td>
+                                                 {{d.CustomerNumber}}
+                                            </td>
+                                            <td>
+                                                 {{d.QuantitySold}}
+                                            </td>
+                                            <td>
+                                                 {{d.Date}}
+                                            </td>
+                                         </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                    </div>
+                    <div id="menu3" class="tab-pane fade">
+                      <h3>Sales Reports</h3><br>
+                    </div>
+                  </div>
+            </div>
+        </div>    
+    
+    
+<!-- jQuery - required for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+<!--All Bootstrap plug-ins file -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    </body>
+</html>
