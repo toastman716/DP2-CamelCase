@@ -1,0 +1,3 @@
+$query = "Select * from Sales desc name";
+$query = "Select * from Sales where code = '$code' or name = '$name' desc name";
+ -- $query = "Select * from Sales where name = '$name' desc name";
