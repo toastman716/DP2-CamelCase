@@ -1,5 +1,5 @@
 $addstockquery = "insert into in_stock (code, name, price, quantity) values ('$code', '$name', '$price', '$quantity')";
-$removestockqueryone = "delete from in_stock where code ='$code'";
+$removestockqueryone = "delete from in_stock where code ='$code' or name = '$name'";
 $removestockquerytwo = "delete from in_stock where name = '$name'";
 $modifystockqueryone = "update in_stock set cost ='$cost' where code ='$code'";
 $modifystockquerytwo = "update in_stock set quantity = '$quantity' where code ='$code'";
